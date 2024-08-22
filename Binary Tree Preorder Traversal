@@ -1,0 +1,13 @@
+class Solution {
+    List<Integer> ans = new ArrayList<>();//to store ans in this list
+    public List<Integer> preorderTraversal(TreeNode root) {
+        if(root == null) return ans;//return the list 
+
+        ans.add(root.val);//add val to the ans List
+
+        preorderTraversal(root.left);//left call by recursion
+        preorderTraversal(root.right);// right call by recurtion
+
+        return ans;//rsturn the stored list of ans
+    }
+}
