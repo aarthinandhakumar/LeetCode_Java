@@ -1,0 +1,25 @@
+ class Solution {
+    Map<Integer,Integer> map = new HashMap<>();
+    
+    void solve(TreeNode root){
+        if(root == null) return;
+        int c = map.getOrDefault(root.val,0)+1;
+        map.put(root.val,c);
+        solve(root.left);
+        solve(root.right);
+    }
+    
+    public int[] findMode(TreeNode root) {
+        List<Integer> lis = new ArrayList<>();
+        solve(root);
+        int max=0;
+        for(int i : map.values()) max=Math.max(max,i);
+        for(Map.Entry<Integer,Integer> m : map.entrySet()){
+            if(m.getValue()==max) lis.add(m.getKey());
+        }
+        int ans[] = new int[lis.size()];
+        for(int i=0;i<lis.size();i++)
+            ans[i] = lis.get(i);
+        return ans;
+    }
+}
