@@ -1,0 +1,14 @@
+class Solution {
+    public String reverseStr(String s, int k) {
+        List<StringBuilder> list = new ArrayList<>();
+        for(int i=0; i<s.length(); i+=k){
+            list.add(new StringBuilder(s.substring(i, Math.min(i+k, s.length()))));
+        }
+        StringBuilder res = new StringBuilder();
+        for(int i =0; i< list.size(); i++){
+            if( i%2 == 0 ) res.append(list.get(i).reverse());
+            else res.append(list.get(i));
+        }
+        return res.toString();
+    }
+}
